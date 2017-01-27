@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}PieroMuguna - Project {{ project.project_id }}{% endblock %}
+
+{% block content %}
+<div class="container single-project">
+	<div class="single-project-img">
+		<img class="img-responsive" src="{{ project.project_image.url }}">
+	</div>
+	<div class="single-project-description">
+		<div class="page-header">
+			<h2 class="text-center">{{ project.project_name }}</h2>
+		</div>
+		<p class="lead">{{ project.project_description }}</p>
+		<br>
+		<a class="btn btn-primary" href="{{ project.project_link }}" target="_blank">View Project</a>
+	</div>
+	<div class="other-projects">
+		<h2 class="text-center page-header">Other Projects</h2>
+		{% for projec in projects %}
+		<div class="col-md-4 project">
+			<a href="{% url 'project-details' project.id %}">
+			<img class="img-responsive" src="{{ projec.project_image.url }}">
+			</a>
+			<div class="project-description">
+				<h3 class="page-header">{{ projec.project_name }}</h3>
+				<p>{{ projec.project_description | slice:"100" }}...</p>
+			</div>
+			<div class="project-link">
+				<a href="{{ projec.project_link }}" target="_blank"><i class="fa fa-link"></i>View Project </a>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+{% endblock %}

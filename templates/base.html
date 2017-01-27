@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{% static '/images/favicon.jpg' %}">
+    <link rel="icon" href="{% static '/images/favicon-32.jpg' %}">
+    <link rel="icon" href="{% static '/images/favicon-180.jpg' %}">
+
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static '/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static '/css/starter.css' %}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Anton|Bungee+Shade|Cabin|Cinzel|Cormorant|Courgette|Farsan|Fira+Sans+Condensed|Francois+One|Hammersmith+One|IM+Fell+English+SC|Josefin+Slab|Lobster+Two|Montserrat|Open+Sans|Open+Sans+Condensed:300|Orbitron|Oswald|Overpass|Overpass+Mono|Oxygen|PT+Sans|PT+Sans+Narrow|Poiret+One|Quicksand|Raleway|Righteous|Titillium+Web|Ubuntu|Yanone+Kaffeesatz" rel="stylesheet">
+    <script src="https://use.fontawesome.com/223b6a0e4c.js"></script>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{% url 'home' %}">Piero Muguna</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav nav-list-one">
+            <li class="active"><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+   {% block content %}
+   {% endblock %}
+   <footer id="contact" class=footer>
+      <div class="container">
+        <div class="col-md-4">
+          <div class="page-header"><h4>Social</h4></div>
+          <p><a href=""><i class="fa fa-github"></i> Github</a></p>
+              <p><a href=""><i class="fa fa-facebook"></i> Facebook</a></p>
+              <p><a href=""><i class="fa fa-twitter"></i> Twitter</a></p>
+        </div>
+        <div class="col-md-4">
+          <div class="page-header"><h4>Find Me </h4></div>
+                <p><i class="fa fa-globe"></i> 1436, Somewhere in Nairobi</p>
+                <p><i class="fa fa-phone"></i> +254-7123456</p>
+                <p><i class="fa fa-envelope"></i> piero@cyclonedevelopers.co.ke</p>
+          </div>
+        <div class="col-md-4">
+        <div class="page-header"><h4>Talk To Me</h4></div>
+          <form class="form-horizontal" role="form" method="POST" action="">
+              <div class="form-group">
+                <label class="footer-form-label" for="names">Name</label>
+                <input type="text" name="name" class="form-control">
+              </div>
+              <div class="form-group">
+                <label class="footer-form-label" for="email">Email</label>
+                <input type="email" name="email" class="form-control">
+              </div>
+              <div class="form-group">
+                <label class="footer-form-label" for="phone">Message</label>
+                <textarea name="message" class="form-control" rows="6"></textarea>
+              </div>
+              <div class="col-md-offset-4">
+                <button type="submit" class="btn btn-primary footer-form-submit" name="submit">SUBMIT</button>
+              </div>
+            </form>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{% static '/js/jquery.min.js' %}"></script>
+    <script src="{% static '/js/bootstrap.min.js' %}"></script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}PieroMuguna - Home{% endblock %}
+
+{% block content %}
+<div class="container-fluid hero-section">
+	<div class="hero-text">
+		<h1>Hello World!</h1>
+	</div>
+</div>
+<div id="about" class="container auto-b">
+	<div class="page-header">
+		<h1 class="text-center">Who Am I?</h1>
+	</div>
+	<img class="img-responsive img-circle center-block bio-image" src="{% static '/images/me.png' %}">
+	<p class="lead">Hi, thanks for stopping by. I am Piero, a passionate Django developer who cares deeply about beautiful design, elegant code, and the intersection of the two. My core competency lies in complete end-end management of a new website development project.</p>
+	<p class="lead">I'm on a journey to programming mastery, my main focus is Python's framework Django. I wish to help my clients build state of art Django application. Join me as I work to master Django, ajax, jquery, html5, css3 and more!</p>
+</div>
+<div id="projects" class="container-fluid projects">
+	<div class="container">
+		<div class="page-header">
+			<h1 class="text-center">My Projects</h1>
+		</div>
+		{% for project in projects %}
+		<div class="col-md-4 project">
+			<a href="{% url 'project-details' project.id %}">
+			<img class="img-responsive" src="{{ project.project_image.url }}">
+			</a>
+			<div class="project-description">
+				<h3 class="page-header">{{ project.project_name }}</h3>
+				<p>{{ project.project_description | slice:"100" }}...</p>
+			</div>
+			<div class="project-link">
+				<a href="{{ project.project_link }}" target="_blank"><i class="fa fa-link"></i>View Project </a>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+
+{% endblock %}
