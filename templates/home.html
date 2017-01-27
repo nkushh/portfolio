@@ -24,7 +24,7 @@
 		</div>
 		{% for project in projects %}
 		<div class="col-md-4 project">
-			<a href="{% url 'project-details' project.id %}">
+			<a href="{% url 'portfolio:project-details' project.id %}">
 			<img class="img-responsive" src="{{ project.project_image.url }}">
 			</a>
 			<div class="project-description">

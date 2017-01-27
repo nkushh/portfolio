@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Blog - Home{% endblock %}
+
+{% block content %}
+<div class="container blog-home">
+	<div class="col-md-8">
+		{% for post in posts %}
+		<div class="blog-post-list">
+			<div class="featured-img">
+				<a href="{% url 'blog:post-detail' post.id %}">
+				<img class="img-responsive" src="{{ post.post_image.url }}">
+				</a>
+			</div>
+			<div class="page-header">
+				<a href="{% url 'blog:post-detail' post.id %}">
+				<h2>{{ post.post_title }}</h2>
+				</a>
+				<p>Published on: {{ post.date_created }}</p>
+			</div>
+			<p class="lead">{{ post.post_content | slice:"400" }}......</p>
+			<a class="btn btn-primary" href="{% url 'blog:post-detail' post.id %}">Read more</a>
+		</div>
+		<hr>
+		{% endfor %}
+		
+	</div>
+	<div class="col-md-3 col-md-offset-1">
+		<div class="archive-list">
+			<div class="page-header">
+				<h3>Categories</h3>
+			</div>
+			<ul class="list-unstyled">
+			{% for category in categories %}
+				<li><a href="">{{ category.category_name }}</a></li>
+			{% endfor %}
+			</ul>
+		</div>
+		
+	</div>
+</div>
+
+{% endblock %}

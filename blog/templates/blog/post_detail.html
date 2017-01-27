@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+
+{% block title %}Blog - Post {{ post.pk }}{% endblock %}
+
+{% block content %}
+<div class="container blog-home">
+	<div class="col-md-8">
+		<div class="blog-post-list">
+			<div class="featured-img">
+				<img class="img-responsive" src="{{ post.post_image.url }}">
+			</div>
+			<div class="page-header">
+				<h2>{{ post.post_title }}</h2>
+				<p>Published on: {{ post.date_created }}</p>
+			</div>
+			<p class="lead">{{ post.post_content }}</p>
+		</div>
+		
+	</div>
+	<div class="col-md-3 col-md-offset-1">
+		<div class="archive-list">
+			<div class="page-header">
+				<h3>Categories</h3>
+			</div>
+			<ul class="list-unstyled">
+			{% for category in categories %}
+				<li><a href="">{{ category.category_name }}</a></li>
+			{% endfor %}
+			</ul>
+		</div>
+		
+	</div>
+</div>
+{% endblock %}
