@@ -28,11 +28,10 @@
 			<img class="img-responsive" src="{{ project.project_image.url }}">
 			</a>
 			<div class="project-description">
+				<a href="{% url 'portfolio:project-details' project.id %}">
 				<h3 class="page-header">{{ project.project_name }}</h3>
+				</a>
 				<p>{{ project.project_description | slice:"100" }}...</p>
-			</div>
-			<div class="project-link">
-				<a href="{{ project.project_link }}" target="_blank"><i class="fa fa-link"></i>View Project </a>
 			</div>
 		</div>
 		{% endfor %}

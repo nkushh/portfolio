@@ -19,15 +19,14 @@
 		<h2 class="text-center page-header">Other Projects</h2>
 		{% for projec in projects %}
 		<div class="col-md-4 project">
-			<a href="{% url 'portfolio:project-details' project.id %}">
+			<a href="{% url 'portfolio:project-details' projec.id %}">
 			<img class="img-responsive" src="{{ projec.project_image.url }}">
 			</a>
 			<div class="project-description">
+				<a href="{% url 'portfolio:project-details' projec.id %}">
 				<h3 class="page-header">{{ projec.project_name }}</h3>
+				</a>
 				<p>{{ projec.project_description | slice:"100" }}...</p>
-			</div>
-			<div class="project-link">
-				<a href="{{ projec.project_link }}" target="_blank"><i class="fa fa-link"></i>View Project </a>
 			</div>
 		</div>
 		{% endfor %}
