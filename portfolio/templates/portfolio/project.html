@@ -19,7 +19,7 @@
 		<h2 class="text-center page-header">Other Projects</h2>
 		{% for projec in projects %}
 		<div class="col-md-4 project">
-			<a href="{% url 'project-details' project.id %}">
+			<a href="{% url 'portfolio:project-details' project.id %}">
 			<img class="img-responsive" src="{{ projec.project_image.url }}">
 			</a>
 			<div class="project-description">
