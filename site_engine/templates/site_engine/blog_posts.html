@@ -1,0 +1,22 @@
+{% extends "site_engine/base.html" %}
+
+{% block title %}Dashboard - Blog Posts{% endblock %}
+
+{% block content %}
+<div class="col-md-9 col-md-offset-2 main">
+  <a class="btn btn-primary pull-right" href=""><i class="fa fa-plus"></i> Blog Post</a>
+  <h2 class="sub-header">Uploaded Projects</h2>
+  {% for post in posts %}
+  <div class="col-md-3 project">
+  	<img class="img-responsive" src="{{ post.post_image.url }}">
+  	<div class="project-description">
+  		<h3>{{ post.post_title }}</h3>
+  		<p>{{ post.post_content|slice:"120"}}....</p>
+  		<p>Category: {{ post.category}}</p>
+  	</div>
+
+  </div>
+  {% endfor %}
+  
+</div>
+{% endblock %}
