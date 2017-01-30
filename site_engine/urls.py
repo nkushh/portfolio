@@ -6,4 +6,5 @@ app_name = 'site_engine'
 
 urlpatterns = [
 	url(r'^$', views.dashboard, name="dashboard"),
+	url(r'^projects/$', views.view_projects, name="view-projects"),
 ]

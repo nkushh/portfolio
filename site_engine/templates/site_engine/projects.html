@@ -1,0 +1,22 @@
+{% extends "site_engine/base.html" %}
+
+{% block title %}Dashboard - Projects{% endblock %}
+
+{% block content %}
+<div class="col-md-9 col-md-offset-2 main">
+  <a class="btn btn-primary pull-right" href=""><i class="fa fa-plus"></i> Project</a>
+  <h2 class="sub-header">Uploaded Projects</h2>
+  {% for project in projects %}
+  <div class="col-md-3 project">
+  	<img class="img-responsive" src="{{ project.project_image.url }}">
+  	<div class="project-description">
+  		<h3>{{ project.project_name }}</h3>
+  		<p>{{ project.project_description|slice:"120"}}....</p>
+  		<p><a href="">{{ project.project_link}}</a></p>
+  	</div>
+
+  </div>
+  {% endfor %}
+  
+</div>
+{% endblock %}

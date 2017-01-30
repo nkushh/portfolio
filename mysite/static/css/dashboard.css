@@ -103,3 +103,38 @@ body {
   display: inline-block;
   border-radius: 50%;
 }
+
+.project {
+    border: .5px solid #ccc;
+    height: 300px;
+    width: 250px;
+    background-color: white;
+    margin-left: 5%;
+    margin-bottom: 3%;
+    padding: 5px 10px 5px 10px;
+    border-radius: 3px;
+}
+
+.project:hover{
+  border: .5px solid #0f0e0f;
+}
+
+.project-description{
+  /*height: 40%;*/
+}
+
+.project-description a{
+  color: inherit;
+}
+.project-link{
+  text-align: center;
+}
+
+.project h3{
+  font-size: 150%;
+}
+
+.project img{
+  height: 100px;
+  width:100%;
+}
