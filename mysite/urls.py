@@ -22,6 +22,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('portfolio.urls', namespace='portfolio'), name="home"),
     url(r'^blog/', include('blog.urls', namespace='blog'), name="blog-home"),
+    url(r'^dashboard/', include('site_engine.urls', namespace='site_engine'), name="dashboard"),
 ]
 
 if settings.DEBUG:
