@@ -41,7 +41,7 @@ def view_blog_categories(request):
 
 def new_blog_category(request):
 	if request.method=="POST":
-		
+
 		form = CategoryForms(request.POST)
 		if form.is_valid():
 			form.save()
@@ -49,6 +49,6 @@ def new_blog_category(request):
 	else:
 
 		context = {
-			'form' : form,
+			'form' : CategoryForms(),
 		}
 	return render(request, "site_engine/new_blog_category.html", context)
