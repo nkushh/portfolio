@@ -20,14 +20,18 @@ def view_posts(request):
 	return render(request, "site_engine/blog_posts.html", context)
 
 def new_project(request):
-	form = ProjectForms(request.POST, request.FILES)
-	if form.is_valid():
-		form.save(commit=False)
-		form.save()
-		return redirect("site_engine:view-projects")
+	if request.method=="POST":
+
+		form = ProjectForms(request.POST, request.FILES)
+		if form.is_valid():
+			form.save(commit=False)
+			form.save()
+			return redirect("site_engine:view-projects")
 	else:
-		print("I fail Again")
-	return render(request, "site_engine/new_project.html", {"form":form})
+		context = {
+			'form' : ProjectForms()
+		}
+	return render(request, "site_engine/new_project.html", context)
 
 def view_blog_categories(request):
 	context = {
@@ -36,10 +40,12 @@ def view_blog_categories(request):
 	return render(request, "site_engine/blog_categories.html", context)
 
 def new_blog_category(request):
-	form = CategoryForms(request.POST)
-	if form.is_valid():
-		form.save()
-		return redirect('site_engine:blog-categories')
+	if request.method=="POST":
+		
+		form = CategoryForms(request.POST)
+		if form.is_valid():
+			form.save()
+			return redirect('site_engine:blog-categories')
 	else:
 
 		context = {
