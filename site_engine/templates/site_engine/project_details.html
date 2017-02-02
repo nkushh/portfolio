@@ -1,0 +1,22 @@
+{% extends "site_engine/base.html" %}
+
+{% block title %}Dashboard - Project {{ project.id}}{% endblock %}
+
+{% block content %}
+<div class="col-md-9 col-md-offset-2 main">
+  <h2 class="sub-header text-center">{{ project.project_name }}</h2>
+  <div class="col-md-offset-2 col-md-9">
+  	<img class="img-responsive" src="{{ project.project_image.url }}">
+  	<div class="project-description">
+  		<p>{{ project.project_description|linebreaksbr }}</p>
+  	</div>
+    <i class="fa fa-link"></i> <a href="{{ project.project_link }}">{{ project.project_link}}</a>
+    <hr>
+    <div class="pull-right">
+      <a class="btn btn-success" href="{% url 'site_engine:edit-project' project.id %}"><i class="fa fa-edit"></i> Edit</a>
+      <a class="btn btn-danger" href=""><i class="fa fa-trash-o"></i> Delete</a>
+    </div>
+  </div>
+  
+</div>
+{% endblock %}

@@ -12,9 +12,8 @@
   	<div class="project-description">
   		<h3>{{ project.project_name }}</h3>
   		<p>{{ project.project_description|slice:"120"}}....</p>
-  		<p><a href="">{{ project.project_link}}</a></p>
   	</div>
-
+    <a class="btn btn-warning center-block" href="{% url 'site_engine:project-details' project.id %}">Details</a>
   </div>
   {% endfor %}
   

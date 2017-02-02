@@ -33,6 +33,24 @@ def new_project(request):
 		}
 	return render(request, "site_engine/new_project.html", context)
 
+def project_details(request, project_id):
+	project = get_object_or_404(Project, pk=project_id)
+	context = {
+		'project' : project,
+	}
+	return render(request, "site_engine/project_details.html", context)
+
+def edit_project(request, project_id):
+	project = get_object_or_404(Project, pk=project_id)
+	if request.method=="POST":
+		form = ProjectForms(request.POST, request.FILES, instance=project)
+		if form.is_valid():
+			form.save()
+			return redirect("site_engine:project-details", project_id=project_id)
+	else:
+		form = ProjectForms(instance=project)
+	return render(request, "site_engine/edit_project.html", {'form':form})
+
 def view_blog_categories(request):
 	context = {
 		'categories' : Categorie.objects.all(),
