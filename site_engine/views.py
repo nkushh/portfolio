@@ -20,10 +20,14 @@ def view_posts(request):
 	return render(request, "site_engine/blog_posts.html", context)
 
 def new_project(request):
-	context = {
-		'form' : ProjectForms(),
-	}
-	return render(request, "site_engine/new_project.html", context)
+	form = ProjectForms(request.POST, request.FILES)
+	if form.is_valid():
+		form.save(commit=False)
+		form.save()
+		return redirect("site_engine:view-projects")
+	else:
+		print("I fail Again")
+	return render(request, "site_engine/new_project.html", {"form":form})
 
 def view_blog_categories(request):
 	context = {
