@@ -1,0 +1,17 @@
+{% extends "site_engine/base.html" %}
+
+{% block title %}Dashboard - Blog Categories{% endblock %}
+
+{% block content %}
+<div class="col-md-9 col-md-offset-2 main">
+  <a class="btn btn-primary pull-right" href="{% url 'site_engine:new-blog-category' %}"><i class="fa fa-plus"></i> Category</a>
+  <h2 class="sub-header">Existent Categories</h2>
+  {% for category in categories %}
+  <div class="col-md-3 blog-category">
+  <h1>{{ category.category_name }}</h1>
+  <p><strong>Created on:</strong> {{ category.created_on }}</p>
+  </div>
+  {% endfor %}
+  
+</div>
+{% endblock %}

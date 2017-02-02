@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="col-md-9 col-md-offset-2 main">
-  <a class="btn btn-primary pull-right" href=""><i class="fa fa-plus"></i> Project</a>
+  <a class="btn btn-primary pull-right" href="{% url 'site_engine:new-project' %}"><i class="fa fa-plus"></i> Project</a>
   <h2 class="sub-header">Uploaded Projects</h2>
   {% for project in projects %}
   <div class="col-md-3 project">
