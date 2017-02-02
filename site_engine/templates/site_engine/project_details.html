@@ -14,7 +14,7 @@
     <hr>
     <div class="pull-right">
       <a class="btn btn-success" href="{% url 'site_engine:edit-project' project.id %}"><i class="fa fa-edit"></i> Edit</a>
-      <a class="btn btn-danger" href=""><i class="fa fa-trash-o"></i> Delete</a>
+      <a class="btn btn-danger" href="{% url 'site_engine:delete-project' project.id %}" onclick="return confirm('Are you sure?');"><i class="fa fa-trash-o"></i> Delete</a>
     </div>
   </div>
   

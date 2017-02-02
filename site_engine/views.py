@@ -51,6 +51,11 @@ def edit_project(request, project_id):
 		form = ProjectForms(instance=project)
 	return render(request, "site_engine/edit_project.html", {'form':form})
 
+def delete_project(request, project_id):
+	project = get_object_or_404(Project, pk=project_id)
+	project.delete()
+	return redirect("site_engine:view-projects")
+
 def view_blog_categories(request):
 	context = {
 		'categories' : Categorie.objects.all(),
