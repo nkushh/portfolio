@@ -1,0 +1,22 @@
+{% extends "site_engine/base.html" %}
+
+{% block title %}Dashboard - Category Details{% endblock %}
+
+{% block content %}
+	<div class="col-md-9 col-md-offset-2 main">
+		<a class="btn btn-primary pull-right" href=""><i class="fa fa-plus"></i> Post</a>
+		<h2 class="sub-header"><strong>Category:</strong> {{ category.category_name }}</h2>
+		<h2><strong>Date added:</strong> <small>{{ category.created_on }}</small></h2>
+		<a class="btn btn-success" href="{% url 'site_engine:edit-blog-category' category.id %}"><i class="fa fa-edit"></i> Edit</a>
+		<a class="btn btn-danger" href="{% url 'site_engine:delete-blog-category' category.id %}"><i class="fa fa-trash-o"></i> Delete</a>
+		<hr>
+		{% for post in category.post_set.all %}
+		<div class="col-md-3">
+			<img class="img-responsive" src="{{ post.post_image.url }}">
+			<h3>{{ post.post_title }}</h3>
+			<p>{{ post.post_content|slice:"150" }}</p>
+			<a class="btn btn-warning" href="">More Details</a>
+		</div>
+		{% endfor %}
+	</div>
+{% endblock %}

@@ -11,7 +11,7 @@ class Categorie(models.Model):
 		return self.category_name
 
 class Post(models.Model):
-	category = models.ForeignKey(Categorie)
+	category = models.ForeignKey(Categorie, on_delete=models.CASCADE)
 	post_title = models.CharField(max_length=200)
 	post_content = models.TextField()
 	post_image = models.FileField(blank=True, null=True)
