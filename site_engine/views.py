@@ -109,10 +109,17 @@ def delete_blog_category(request, category_id):
 	category.delete()
 	return redirect("site_engine:blog-categories")
 
-# Fetches all the blog posts in teh database
+# Fetches all the blog posts in the database
 def view_posts(request):
 	context = {
 		'posts' : Post.objects.all(),
 	}
 	return render(request, "site_engine/blog_posts.html", context)
+
+# Function to get blog post details
+def post_details(request, post_id):
+	context = {
+		'post' : get_object_or_404(Post, pk=post_id)
+	}
+	return render(request, "site_engine/post_details.html", context)
 # END BLOG FUNCTIONS

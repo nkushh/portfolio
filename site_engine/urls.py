@@ -17,4 +17,5 @@ urlpatterns = [
 	url(r'^edit-blog-category/(?P<category_id>\d+)/$', views.edit_blog_category, name="edit-blog-category"),
 	url(r'^delete-blog-category/(?P<category_id>\d+)/$', views.delete_blog_category, name="delete-blog-category"),
 	url(r'^blog-posts/$', views.view_posts, name="view-posts"),
+	url(r'^post/(?P<post_id>\d+)/detail/$', views.post_details, name="post-details"),
 ]

@@ -7,6 +7,7 @@
   <a class="btn btn-primary pull-right" href=""><i class="fa fa-plus"></i> Blog Post</a>
   <h2 class="sub-header">Uploaded Projects</h2>
   {% for post in posts %}
+  <a href="{% url 'site_engine:post-details' post.id %}">
   <div class="col-md-3 project">
   	<img class="img-responsive" src="{{ post.post_image.url }}">
   	<div class="project-description">
@@ -16,6 +17,7 @@
   	</div>
 
   </div>
+  </a>
   {% endfor %}
   
 </div>
