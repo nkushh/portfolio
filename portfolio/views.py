@@ -12,6 +12,6 @@ def index(request):
 def project_details(request, project_id):
 	context = {
 		'project' : get_object_or_404(Project, pk=project_id),
-		'projects' : Project.objects.all(),
+		'projects' : Project.objects.all().exclude(pk=project_id),
 	}
 	return render(request, 'portfolio/project.html', context)
