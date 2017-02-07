@@ -8,10 +8,12 @@
 		<p><strong>Category:</strong> {{ post.category }}</p>
 		<hr>
 		<div>
+		{% if post.post_image %}
 			<img src="{{ post.post_image.url }}" class="img-responsive center-block">
+			{% endif %}
 			<p class="lead">{{ post.post_content|linebreaksbr }}</p>
 		</div>
-		<a class="btn btn-success" href=""><i class="fa fa-edit"></i> Edit</a>
-		<a class="btn btn-danger" href=""><i class="fa fa-trash-o"></i> Delete</a>
+		<a class="btn btn-success" href="{% url 'site_engine:edit-post' post.id %}"><i class="fa fa-edit"></i> Edit</a>
+		<a class="btn btn-danger" href="{% url 'site_engine:delete-post' post.id %}" onclick="return confirm('Are you sure?')"><i class="fa fa-trash-o"></i> Delete</a>
 	</div>
 {% endblock %}

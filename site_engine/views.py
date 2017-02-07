@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect, get_object_or_404
 from portfolio.models import Project
 from blog.models import Categorie, Post
-from .forms import ProjectForms, CategoryForms
+from .forms import ProjectForms, CategoryForms, BlogPostForms
 
 # Create your views here.
 # Function to view the home page dor site_engine app
@@ -122,4 +122,35 @@ def post_details(request, post_id):
 		'post' : get_object_or_404(Post, pk=post_id)
 	}
 	return render(request, "site_engine/post_details.html", context)
+
+def new_blog_post(request):
+	if request.method=="POST":
+		form = BlogPostForms(request.POST, request.FILES)
+		if form.is_valid():
+			form.save()
+			return redirect("site_engine:view-posts")
+	else:
+		context = {
+			'form' : BlogPostForms(),
+		}
+	return render(request, "site_engine/new_blog_post.html", context)
+
+def update_blog_post(request, post_id):
+	post = get_object_or_404(Post, pk=post_id)
+	if request.method=="POST":
+		form = BlogPostForms(request.POST, request.FILES, instance=post)
+		if form.is_valid():
+			form.save()
+			return redirect("site_engine:post-details", post_id=post_id)
+	else:
+		context = {
+			'form' : BlogPostForms(instance=post),
+			'post' : post,
+		}
+	return render(request, "site_engine/edit_blog_post.html", context)
+
+def delete_blog_post(request, post_id):
+	post = get_object_or_404(Post, pk=post_id)
+	post.delete()
+	return redirect("site_engine:view-posts")
 # END BLOG FUNCTIONS
