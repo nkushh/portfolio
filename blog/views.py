@@ -5,7 +5,7 @@ from .models import Categorie, Post
 def home(request):
 	context = {
 		'categories' : Categorie.objects.all(),
-		'posts' : Post.objects.all(),
+		'posts' : Post.objects.filter(date_published__isnull=False).order_by('-date_published'),
 	}
 	return render(request, "blog/home.html", context)
 
