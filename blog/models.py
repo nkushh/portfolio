@@ -16,7 +16,7 @@ class Post(models.Model):
 	post_content = models.TextField()
 	post_image = models.FileField(blank=True, null=True)
 	date_created = models.DateTimeField(auto_now_add=True, auto_now=False)
-	date_published = models.DateTimeField(auto_now_add=False, auto_now=True)
+	date_published = models.DateTimeField(auto_now_add=False, null=True)
 
 	def publish(self):
 		self.date_published = timezone.now()

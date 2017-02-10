@@ -5,8 +5,12 @@
 {% block content %}
 <div class="col-md-9 col-md-offset-2 main">
   <a class="btn btn-primary pull-right" href="{% url 'site_engine:new-post' %}"><i class="fa fa-plus"></i> Blog Post</a>
-  <h2 class="sub-header">Uploaded Projects</h2>
-  {% for post in posts %}
+  <div class="page-header">
+    <h2 class="sub-header">Blog Posts</h2>
+    <a class="btn btn-success" href="{% url 'site_engine:published-posts' %}"><i class="fa fa-pencil-square"></i> Published Posts</a>
+    <a class="btn btn-warning" href="{% url 'site_engine:draft-posts' %}"><i class="fa fa-pencil-square-o"></i> Draft Posts</a> 
+  </div>
+   {% for post in posts %}
   <a href="{% url 'site_engine:post-details' post.id %}">
   <div class="col-md-3 project">
   {% if post.post_image %}
@@ -16,6 +20,7 @@
   		<h3>{{ post.post_title }}</h3>
   		<p>{{ post.post_content|slice:"120"}}....</p>
   		<p>Category: {{ post.category}}</p>
+      <p>Status: {% if not post.date_published %}<span class="label label-warning">Draft</span>{% else %}<span class="label label-success">Published</span>{% endif %}</p>
   	</div>
 
   </div>

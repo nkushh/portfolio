@@ -13,6 +13,9 @@
 			{% endif %}
 			<p class="lead">{{ post.post_content|linebreaksbr }}</p>
 		</div>
+		{% if not post.date_published %}
+		<a class="btn btn-primary" href="{% url 'site_engine:publish-post' post.id %}"><i class="fa fa-pencil-square"></i> Publish</a>
+		{% endif %}
 		<a class="btn btn-success" href="{% url 'site_engine:edit-post' post.id %}"><i class="fa fa-edit"></i> Edit</a>
 		<a class="btn btn-danger" href="{% url 'site_engine:delete-post' post.id %}" onclick="return confirm('Are you sure?')"><i class="fa fa-trash-o"></i> Delete</a>
 	</div>

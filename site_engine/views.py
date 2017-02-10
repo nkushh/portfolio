@@ -112,7 +112,21 @@ def delete_blog_category(request, category_id):
 # Fetches all the blog posts in the database
 def view_posts(request):
 	context = {
-		'posts' : Post.objects.all(),
+		'posts' : Post.objects.all().order_by('-date_created'),
+	}
+	return render(request, "site_engine/blog_posts.html", context)
+
+# Function to get published blogs only
+def published_blog_posts(request):
+	context = {
+		'posts' : Post.objects.filter(date_published__isnull=False).order_by('-date_published'),
+	}
+	return render(request, "site_engine/blog_posts.html", context)
+
+# Function to get draft blogs only
+def draft_blog_posts(request):
+	context = {
+		'posts' : Post.objects.filter(date_published__isnull=True).order_by('-date_created'),
 	}
 	return render(request, "site_engine/blog_posts.html", context)
 
@@ -122,6 +136,12 @@ def post_details(request, post_id):
 		'post' : get_object_or_404(Post, pk=post_id)
 	}
 	return render(request, "site_engine/post_details.html", context)
+
+# Function to publish a draft post
+def publish_blog_post(request, post_id):
+	post = get_object_or_404(Post, pk=post_id)
+	post.publish()
+	return redirect("site_engine:post-details", post_id=post_id)
 
 def new_blog_post(request):
 	if request.method=="POST":

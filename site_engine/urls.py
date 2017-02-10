@@ -17,8 +17,11 @@ urlpatterns = [
 	url(r'^edit-blog-category/(?P<category_id>\d+)/$', views.edit_blog_category, name="edit-blog-category"),
 	url(r'^delete-blog-category/(?P<category_id>\d+)/$', views.delete_blog_category, name="delete-blog-category"),
 	url(r'^blog-posts/$', views.view_posts, name="view-posts"),
+	url(r'^published-posts/$', views.published_blog_posts, name="published-posts"),
+	url(r'^draft-posts/$', views.draft_blog_posts, name="draft-posts"),
 	url(r'^post/(?P<post_id>\d+)/detail/$', views.post_details, name="post-details"),
 	url(r'^new-post/$', views.new_blog_post, name="new-post"),
+	url(r'^publish-post/(?P<post_id>\d+)/$', views.publish_blog_post, name="publish-post"),
 	url(r'^edit-post/(?P<post_id>\d+)/$', views.update_blog_post, name="edit-post"),
 	url(r'^delete-post/(?P<post_id>\d+)/$', views.delete_blog_post, name="delete-post"),
 ]
