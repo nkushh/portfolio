@@ -2,7 +2,8 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render,redirect, get_object_or_404
 from portfolio.models import Project
 from blog.models import Categorie, Post
-from .forms import ProjectForms, CategoryForms, BlogPostForms
+from django.contrib.auth.models import User
+from .forms import ProjectForms, CategoryForms, BlogPostForms, UserForms
 
 # Create your views here.
 # Function to view the home page dor site_engine app
@@ -194,3 +195,24 @@ def delete_blog_post(request, post_id):
 	post.delete()
 	return redirect("site_engine:view-posts")
 # END BLOG FUNCTIONS
+
+# START USERS FUNCTIONS
+@login_required
+def view_users(request):
+	context = {
+		'users' : User.objects.all(),
+	}
+	return render(request, "site_engine/users.html", context)
+
+@login_required
+def new_user(request):
+	if request.method=="POST":
+		form = UserForms(request.POST)
+		if form.is_valid():
+			form.save()
+			return redirect("site_engine:users")
+	else:
+		context = {
+			'form' : UserForms(),
+		}
+	return render(request, "site_engine/new_user.html", context)

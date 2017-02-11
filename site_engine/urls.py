@@ -24,4 +24,6 @@ urlpatterns = [
 	url(r'^publish-post/(?P<post_id>\d+)/$', views.publish_blog_post, name="publish-post"),
 	url(r'^edit-post/(?P<post_id>\d+)/$', views.update_blog_post, name="edit-post"),
 	url(r'^delete-post/(?P<post_id>\d+)/$', views.delete_blog_post, name="delete-post"),
+	url(r'^users/$', views.view_users, name="users"),
+	url(r'^new-user/$', views.new_user, name="new-user"),
 ]
