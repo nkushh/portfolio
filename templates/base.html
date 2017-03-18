@@ -48,6 +48,11 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
+    {% if success %}
+    <div class="alert alert-success">
+      <strong>Success!!</strong> Message successfully sent
+    </div>
+    {% endif %}
 
    {% block content %}
    {% endblock %}
