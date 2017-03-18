@@ -67,7 +67,7 @@
           </div>
         <div class="col-md-4">
         <div class="page-header"><h4>Talk To Me</h4></div>
-          <form class="form-horizontal" role="form" method="POST" action="">
+          <form class="form-horizontal" role="form" method="POST" action="{% url 'portfolio:send_email' %}">{% csrf_token%}
               <div class="form-group">
                 <label class="footer-form-label" for="names">Name</label>
                 <input type="text" name="name" class="form-control">

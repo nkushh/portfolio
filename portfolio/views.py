@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.conf import settings
+from django.core.mail import send_mail
 
 from .models import Project
 
@@ -15,6 +17,22 @@ def project_details(request, project_id):
 		'projects' : Project.objects.all().exclude(pk=project_id),
 	}
 	return render(request, 'portfolio/project.html', context)
+
+def send_email(request):
+	if request.method=="POST":
+		subject = 'Email From Portfolio Site'
+		name = request.POST['name']
+		emailFrom = request.POST['email']
+		content = request.POST['message']
+		message = '%s %s' % (content, name)
+		emailTo = [settings.EMAIL_HOST_USER]
+
+		send_mail(subject, message, emailFrom, emailTo, fail_silently=True)
+		success = "Message successfully sent"
+		context = {
+			success : success,
+		}
+		return render(request, 'home.html', context)
 
 def fb_profile(request):
 	return redirect("http://www.facebook.com/Piero.muguna.m")
