@@ -18,8 +18,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Email settings
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '587'
-EMAIL_HOST_USER = 'mugunapiero@gmail.com'
-EMAIL_HOST_PASSWORD = 'mugumbaabu'
+EMAIL_HOST_USER = 'kirimaniaandrew@gmail.com'
+EMAIL_HOST_PASSWORD = 'Kirimania91?'
 EMAIL_USE_TLS = True
 
 # Quick-start development settings - unsuitable for production

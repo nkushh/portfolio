@@ -24,7 +24,7 @@ def send_email(request):
 		name = request.POST['name']
 		emailFrom = request.POST['email']
 		content = request.POST['message']
-		message = '%s %s' % (content, name)
+		message = '%s \nFrom: %s \n%s' % (content, name, emailFrom)
 		emailTo = [settings.EMAIL_HOST_USER]
 
 		send_mail(subject, message, emailFrom, emailTo, fail_silently=True)
@@ -32,7 +32,7 @@ def send_email(request):
 		context = {
 			success : success,
 		}
-		return render(request, 'home.html', context)
+		return redirect('portfolio:home')
 
 def fb_profile(request):
 	return redirect("http://www.facebook.com/Piero.muguna.m")
