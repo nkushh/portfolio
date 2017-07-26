@@ -69,6 +69,9 @@
                 <p><i class="fa fa-globe"></i> 1436, Somewhere in Nairobi</p>
                 <p><i class="fa fa-phone"></i> +254-7123456</p>
                 <p><i class="fa fa-envelope"></i> piero@cyclonedevelopers.co.ke</p>
+                {% if user.is_authenticated %}
+                <a href="{% url 'site_engine:dashboard' %}" target="_blank" style="color: white; text-decoration: none;">{{ user.username }}</a>
+                {% endif %}
           </div>
         <div class="col-md-4">
         <div class="page-header"><h4>Talk To Me</h4></div>
