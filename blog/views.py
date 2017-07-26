@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Categorie, Post, Comment
 
@@ -30,6 +31,7 @@ def add_comment(request, post_id):
 		text = request.POST['text']
 		comment = Comment(post=post, author=author, text=text)
 		comment.save()
+		messages.success(request, 'Success! Your comment has been submitted for approval!')
 		return redirect('blog:post-detail', post_id = post_id)
 	else:
 		return redirect('blog:post-detail', post_id = post_id)

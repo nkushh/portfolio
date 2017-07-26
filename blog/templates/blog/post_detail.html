@@ -6,6 +6,11 @@
 {% block content %}
 <div class="container blog-home">
 	<div class="col-md-8">
+		{% if messages %}
+		{% for message in messages %}
+		<div class="alert alert-{{ message.tags}}">{{ message }}</div>
+		{% endfor %}
+		{% endif %}
 		<div class="blog-post-list">
 			<div class="featured-img">
 				<img class="img-responsive" src="{{ post.post_image.url }}">
@@ -34,9 +39,9 @@
 				<p class="lead">Add comment</p>
 				<form method="POST" action="{% url 'blog:add_comment' post.pk %}">{% csrf_token%}
 					<label for="author">Author:</label>
-					<input type="text" name="author" class="form-control">
+					<input type="text" name="author" class="form-control" required>
 					<label for="text">Comment:</label>
-					<textarea class="form-control" rows="5" name="text"></textarea>
+					<textarea class="form-control" rows="5" name="text" required></textarea>
 
 					<button type="submit" class="btn btn-primary">Submit</button>
 					<button type="reset" class="btn btb-danger">Cancel</button>
