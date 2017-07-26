@@ -28,9 +28,8 @@ def send_email(request):
 		emailTo = [settings.EMAIL_HOST_USER]
 
 		send_mail(subject, message, emailFrom, emailTo, fail_silently=True)
-		success = "Message successfully sent"
 		context = {
-			success : success,
+			success : 'Message successfully sent',
 		}
 		return redirect('portfolio:home')
 

@@ -16,7 +16,34 @@
 			</div>
 			<p class="lead">{{ post.post_content|linebreaksbr }}</p>
 		</div>
-		
+		<div class="post-comments">
+			<h3>Comments</h3>
+			{% for comment in post.comments.all %}
+			{% if comment.approved_comment %}
+			<div class="comment">
+				<div class="comment-author"><strong>{{ comment.author}}</strong></div>
+				<div class="comment-date">{{ comment.created_date }}</div>
+				<p>{{ comment.text | linebreaks }}</p>
+			</div>
+			{% endif %}
+			{% empty %}
+			<h3>No comments here yet :(</h3>
+			{% endfor %}
+
+			<div class="add-comment">
+				<p class="lead">Add comment</p>
+				<form method="POST" action="{% url 'blog:add_comment' post.pk %}">{% csrf_token%}
+					<label for="author">Author:</label>
+					<input type="text" name="author" class="form-control">
+					<label for="text">Comment:</label>
+					<textarea class="form-control" rows="5" name="text"></textarea>
+
+					<button type="submit" class="btn btn-primary">Submit</button>
+					<button type="reset" class="btn btb-danger">Cancel</button>
+				</form>
+			</div>
+			
+		</div>
 	</div>
 	<div class="col-md-3 col-md-offset-1">
 		<div class="archive-list">

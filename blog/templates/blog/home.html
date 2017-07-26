@@ -19,6 +19,7 @@
 				<p>Published on: {{ post.date_created }}</p>
 			</div>
 			<p class="lead">{{ post.post_content | slice:"400" }}......</p>
+			<p>Comments: {{ post.approved_comments.count }}</p>
 			<a class="btn btn-primary" href="{% url 'blog:post-detail' post.id %}">Read more</a>
 		</div>
 		<hr>

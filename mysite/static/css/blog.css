@@ -6,6 +6,31 @@
 	margin-top: 10%;
 }
 
+.post-comments{
+	margin-top: 5%;
+}
+
+.comment{
+	margin: 20px 0px 20px 20px;
+}
+
+.comment-date{
+	color: green;
+}
+
+.comment p{
+	font-size: 16px;
+}
+
+.add-comment{
+	margin-top: 5%;
+}
+
+.add-comment button{
+	margin-top: 2%;
+	margin-left: 1%
+}
+
 .featured-img img{
 	height: 400px;
 	width: 100%;

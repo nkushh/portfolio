@@ -1,5 +1,5 @@
-from django.shortcuts import render, get_object_or_404
-from .models import Categorie, Post
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import Categorie, Post, Comment
 
 # Create your views here.
 def home(request):
@@ -22,3 +22,14 @@ def post_details(request, post_id):
 		'categories' : Categorie.objects.all(),
 	}
 	return render(request, "blog/post_detail.html", context)
+
+def add_comment(request, post_id):
+	post = get_object_or_404(Post, pk=post_id)
+	if request.method=="POST":
+		author = request.POST['author']
+		text = request.POST['text']
+		comment = Comment(post=post, author=author, text=text)
+		comment.save()
+		return redirect('blog:post-detail', post_id = post_id)
+	else:
+		return redirect('blog:post-detail', post_id = post_id)

@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render,redirect, get_object_or_404
 from portfolio.models import Project
-from blog.models import Categorie, Post
+from blog.models import Categorie, Post, Comment
 from django.contrib.auth.models import User
 from .forms import ProjectForms, CategoryForms, BlogPostForms, UserForms
 
@@ -9,7 +9,15 @@ from .forms import ProjectForms, CategoryForms, BlogPostForms, UserForms
 # Function to view the home page dor site_engine app
 @login_required
 def dashboard(request):
-	return render(request, "site_engine/dashboard.html", {})
+	posts = Post.objects.all()
+	projects = Project.objects.all()
+	comments = Comment.objects.all()
+	context = {
+		'posts' : posts,
+		'projects' : projects,
+		'comments' : comments
+	}
+	return render(request, "site_engine/dashboard.html", context)
 
 # BEGIN PORTFOLIO CRUD FUNCTIONS
 # Fetches all projects from database
@@ -194,6 +202,28 @@ def delete_blog_post(request, post_id):
 	post = get_object_or_404(Post, pk=post_id)
 	post.delete()
 	return redirect("site_engine:view-posts")
+
+@login_required
+def posts_comments(request):
+	comments = Comment.objects.filter(approved_comment=False)
+	context = {
+		'comments' : comments,
+	}
+	return render(request, 'site_engine/post-comments.html',  context)
+
+@login_required
+def approve_comment(request, comment_id):
+	comment = get_object_or_404(Comment, pk=comment_id)
+	comment.approved_comment = True
+	comment.save()
+	return redirect('site_engine:view-comments')
+
+@login_required
+def delete_comment(request, comment_id):
+	comment = get_object_or_404(Comment, pk=comment_id)
+	comment.delete()
+	return redirect('site_engine:view-comments')
+
 # END BLOG FUNCTIONS
 
 # START USERS FUNCTIONS

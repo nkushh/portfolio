@@ -58,12 +58,21 @@ body {
 .nav-sidebar > li > a {
   padding-right: 20px;
   padding-left: 20px;
+  text-decoration: none;
+  font-size: 16px;
+  color: #000;
 }
+
+.nav-sidebar > li > a:hover{
+  color: #fff;
+  background-color: blue;
+} 
+
 .nav-sidebar > .active > a,
 .nav-sidebar > .active > a:hover,
 .nav-sidebar > .active > a:focus {
   color: #fff;
-  background-color: #428bca;
+  background-color: blue;
 }
 
 
@@ -102,6 +111,41 @@ body {
 .placeholder img {
   display: inline-block;
   border-radius: 50%;
+}
+
+
+/* Stat wells */
+.red-well{
+  height: 150px;
+  background-color: red; 
+  color: #fff;
+  border-radius: 10px;
+}
+
+.blue-well{
+  height: 150px;
+  background-color: blue; 
+  color: #fff;
+  border-radius: 10px;
+}
+
+.green-well{
+  height: 150px;
+  background-color: green; 
+  color: #fff;
+  border-radius: 10px;
+}
+
+.stat-no{
+  float: right;
+  font-size: 400%;
+  font-weight: light;
+  text-align: center;
+}
+
+.stat-icon{
+  float: left;
+  font-size: 25px;
 }
 
 .project {
@@ -149,3 +193,22 @@ body {
     padding: 5px 10px 5px 10px;
     border-radius: 3px;
 }
+
+.comment{
+  margin: 20px 0px 20px 20px;
+}
+
+.comment h4 span{
+  font-size: 20px;
+  font-weight: normal;
+}
+
+.comment-date{
+  color: green;
+}
+
+.comment p{
+  font-size: 16px;
+}
+
+

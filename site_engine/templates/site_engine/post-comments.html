@@ -1,0 +1,23 @@
+{% extends "site_engine/base.html" %}
+
+{% block title %}Post Comments{% endblock %}
+
+{% block content %}
+<div class="col-md-9 col-md-offset-2 main">
+	<h3 class="page-header">Comments pending approval</h3>
+	<div class="comment-approval">
+		{% for comment in comments %}
+		<div class="comment">
+			<h4>Post: <span>{{ comment.post }}</span></h4>
+			<div class="author"><strong>{{ comment.author }}</strong></div>
+			<div class="comment-date">{{ comment.created_date }}</div>
+			<p>{{ comment.text | linebreaks }}</p>
+			<a class="btn btn-primary" href="{% url 'site_engine:approve-comment' comment.id %}">Approve</a>
+			<a class="btn btn-danger" href="{% url 'site_engine:delete-comment' comment.id %}">Delete</a>
+		</div>
+		{% empty %}
+		<h4>No comments pending approval :)!</h4>
+		{% endfor %}
+	</div>
+</div>
+{% endblock %}

@@ -7,25 +7,32 @@
   <h1 class="page-header">Dashboard</h1>
 
   <div class="row placeholders">
-    <div class="col-xs-6 col-sm-3 placeholder">
-      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-      <h4>Label</h4>
-      <span class="text-muted">Something else</span>
+    <div class="col-md-4">
+      <div class="well red-well">
+        <div class="stat-no">{{ projects.count }}</div>
+        <div class="stat-icon">
+          <i class="fa fa-folder"></i>
+          <p>Projects</p>
+        </div>
+      </div>
     </div>
-    <div class="col-xs-6 col-sm-3 placeholder">
-      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-      <h4>Label</h4>
-      <span class="text-muted">Something else</span>
+    <div class="col-md-4">
+      <div class="well blue-well">
+        <div class="stat-no">{{ posts.count }}</div>
+        <div class="stat-icon">
+          <i class="fa fa-edit"></i>
+          <p>Posts</p>
+        </div>
+      </div>
     </div>
-    <div class="col-xs-6 col-sm-3 placeholder">
-      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-      <h4>Label</h4>
-      <span class="text-muted">Something else</span>
-    </div>
-    <div class="col-xs-6 col-sm-3 placeholder">
-      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-      <h4>Label</h4>
-      <span class="text-muted">Something else</span>
+    <div class="col-md-4">
+      <div class="well green-well">
+        <div class="stat-no">{{ comments.count }}</div>
+        <div class="stat-icon">
+          <i class="fa fa-comment"></i>
+          <p>Comments</p>
+        </div>
+      </div>
     </div>
   </div>
 
