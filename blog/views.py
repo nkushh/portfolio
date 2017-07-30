@@ -13,7 +13,8 @@ def home(request):
 def category_details(request, category_id):
 	context = {
 		'category' : get_object_or_404(Categorie, pk=category_id),
-		'categories' : Categorie.objects.all().order_by('-date_published'),
+		'categories' : Categorie.objects.all(),
+		'posts' : Post.objects.get(category=category_id).order_by('-date_published'),
 	}
 	return render(request, "blog/category_detail.html", context)
 

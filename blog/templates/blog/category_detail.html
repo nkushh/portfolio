@@ -6,7 +6,7 @@
 <div class="container blog-home">
 	<h2 class="page-header">Category: {{ category.category_name }}</h2>
 	<div class="col-md-8">
-		{% for post in category.post_set.all %}
+		{% for post in posts %}
 		<div class="blog-post-list">
 			<div class="featured-img">
 				<a href="{% url 'blog:post-detail' post.id %}">
